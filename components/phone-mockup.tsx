@@ -151,19 +151,15 @@ function SelectScreen({
         {selected.length > 0 && (
           <motion.button key="plan-my-day-btn" type="button" onClick={onPlan}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, scale: btnTap ? 0.93 : 1 }} exit={{ opacity: 0 }}
-            className="sticky bottom-0 mx-3 mb-2 rounded-full py-2 text-center text-[11px] font-bold text-white cursor-pointer"
+            className="sticky bottom-0 mx-3 mb-2 rounded-full py-2.5 text-center text-[11px] font-bold text-white cursor-pointer"
             style={{
-              background: isDark 
-                ? "linear-gradient(90deg, rgba(255,215,0,0.35) 0%, rgba(0,191,255,0.35) 100%)"
-                : "linear-gradient(90deg, rgba(255,215,0,0.8) 0%, rgba(0,191,255,0.8) 100%)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: `1px solid ${isDark ? "rgba(255,215,0,0.35)" : "rgba(255,215,0,0.5)"}`,
-              boxShadow: isDark 
-                ? "inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 10px rgba(0,191,255,0.15)"
-                : "0 4px 14px rgba(255,215,0,0.25)",
-              textShadow: isDark ? "0 1px 3px rgba(0,0,0,0.35)" : "none",
-              color: isDark ? "#fff" : "#000",
+              background: "linear-gradient(135deg, rgba(30,111,217,0.4) 0%, rgba(30,111,217,0.2) 100%)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(30,111,217,0.45)",
+              boxShadow: "inset 0 1px 1px rgba(255,255,255,0.25), 0 8px 20px -8px rgba(30,111,217,0.4)",
+              color: "#fff",
+              textShadow: "0 1px 2px rgba(0,0,0,0.2)",
             }}>
             Plan My Day →
           </motion.button>

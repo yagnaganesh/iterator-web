@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       "Book the stays, tables, wellness sessions, events, and experiences that make a week feel designed.",
     type: "website",
-    url: "https://iterator.dev",
+    url: "https://iteratorworld.com",
     siteName: "Iterator",
   },
   twitter: {
@@ -35,7 +35,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
+      </head>
+      <body style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

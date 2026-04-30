@@ -120,14 +120,15 @@ export default function MapRouteScreen({ isDark, onBook }: { isDark: boolean; on
           <motion.button key="book-btn-bottom" onClick={onBook}
             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}
             whileTap={{ scale: 0.95 }} transition={{ type: "spring", bounce: 0.5 }}
-            className="absolute bottom-3 left-3 right-3 rounded-full py-2 text-center text-[11px] font-bold text-white cursor-pointer"
+            className="absolute bottom-3 left-3 right-3 rounded-full py-2.5 text-center text-[11px] font-bold text-white cursor-pointer"
             style={{
-              background: "linear-gradient(90deg, rgba(255,215,0,0.22) 0%, rgba(0,191,255,0.22) 100%)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(0,191,255,0.35)",
-              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 2px 10px rgba(0,191,255,0.15)",
-              textShadow: "0 1px 3px rgba(0,0,0,0.35)",
+              background: "linear-gradient(135deg, rgba(30,111,217,0.5) 0%, rgba(30,111,217,0.3) 100%)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(30,111,217,0.5)",
+              boxShadow: "inset 0 1px 1px rgba(255,255,255,0.3), 0 10px 25px -10px rgba(30,111,217,0.5)",
+              color: "#fff",
+              textShadow: "0 1px 2px rgba(0,0,0,0.2)",
             }}>
             Book Now ✓
           </motion.button>

@@ -5,12 +5,6 @@
   "engines": {
     "node": "20"
   },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
-  },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
@@ -24,18 +18,11 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "three": "^0.181.2",
-    "zustand": "^5.0.9"
+    "zustand": "^5.0.9",
+    "sharp": "^0.32 || ^0.33",
+    "firebase-frameworks": "^0.11.0",
+    "firebase-functions": "^6.0.1",
+    "firebase-admin": "^11.11.1"
   },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "^20.19.25",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.22",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.5.15",
-    "postcss": "^8.5.6",
-    "tailwindcss": "3.4.17",
-    "typescript": "^5.9.3"
-  }
+  "main": "server.js"
 }

@@ -19,7 +19,7 @@ type Cat = {
   glowL: string;
   glow2L: string;
   ambient: any;
-  entrance: { x?: number; y?: number; scale?: number; rotate?: number };
+  entrance: { x?: number; y?: number; scale?: number; rotate?: number; opacity?: number };
 };
 
 const CATS: Cat[] = [
