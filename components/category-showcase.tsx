@@ -145,7 +145,7 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
         >
           {/* Large, powerful category name in neutral color */}
           <h1
-            className="text-5xl font-black tracking-tighter sm:text-6xl lg:text-8xl"
+            className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter"
             style={{ lineHeight: 0.9, color: cat.accent }}
           >
             {cat.label}
