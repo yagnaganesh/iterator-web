@@ -1,116 +1,210 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Utensils, Scissors, Popcorn, TentTree, Ticket, ArrowRight, Star } from "lucide-react";
-import { PhoneMockup } from "@/components/phone-mockup";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { useMemo } from "react";
 
-const heroCats = [
-  { label: "Dine Out",        icon: Utensils,  color: "#f59e0b" },
-  { label: "Saloon & Spa",    icon: Scissors,  color: "#ec4899" },
-  { label: "Movies & Shows",  icon: Popcorn,   color: "#3b82f6" },
-  { label: "Parks & Outings", icon: TentTree,  color: "#10b981" },
-  { label: "Events & Games",  icon: Ticket,    color: "#8b5cf6" },
-];
+// Parent stagger container
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] as const },
-});
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.21, 0.45, 0.32, 0.9] as [number, number, number, number],
+    },
+  },
+};
 
 export function Hero() {
-  return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 pb-16 pt-24 sm:px-8 lg:px-12">
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-      {/* Ambient glows */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 -right-32 h-[700px] w-[700px] rounded-full bg-[#1E6FD9]/[0.05] blur-[160px]" />
-        <div className="absolute -bottom-32 -left-32 h-[600px] w-[600px] rounded-full bg-[#F5B41A]/[0.05] blur-[140px]" />
+  // Define springs at the top level to avoid re-creation
+  const springConfig = { stiffness: 60, damping: 25 };
+  const mouseX = useSpring(x, springConfig);
+  const mouseY = useSpring(y, springConfig);
+
+  // Individual tile springs for specific vertical offsets
+  const y1 = useSpring(y, { stiffness: 35, damping: 20 });
+  const y2 = useSpring(y, { stiffness: 45, damping: 22 });
+  const y3 = useSpring(y, { stiffness: 25, damping: 18 });
+  const y4 = useSpring(y, { stiffness: 45, damping: 22 });
+  const y5 = useSpring(y, { stiffness: 35, damping: 20 });
+
+  function onMouseMove(event: React.MouseEvent) {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
+    x.set((clientX - innerWidth / 2) / 50);
+    y.set((clientY - innerHeight / 2) / 50);
+  }
+
+  return (
+    <section 
+      onMouseMove={onMouseMove}
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FBFBFD] dark:bg-[#000000]"
+    >
+      {/* Background Ambient Glow */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 h-[800px] w-[800px] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-500/10" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1fr_auto]">
-
-        {/* ── Left: text ── */}
-        <div className="flex max-w-2xl flex-col">
-
-          {/* Eyebrow badge */}
-          <motion.div {...fadeUp(0)}
-            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border px-4 py-1.5"
-            style={{
-              background: "linear-gradient(90deg, rgba(245,180,26,0.06) 0%, rgba(30,111,217,0.06) 100%)",
-              borderColor: "rgba(245,180,26,0.2)",
-            }}>
-            <Star size={10} className="text-[#F5B41A]" fill="currentColor" />
-            <span className="text-xs font-semibold tracking-widest text-slate-500 dark:text-slate-400 uppercase">
-              India&apos;s #1 Lifestyle Booking App
-            </span>
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1 {...fadeUp(0.06)}
-            className="font-black tracking-tight text-slate-900 dark:text-white"
-            style={{ fontSize: "clamp(3.2rem, 7vw, 5rem)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
-            <span style={{ color: "#1E6FD9" }}>Plan &amp; Book</span>
-            <br />
-            <span className="text-slate-900 dark:text-white">with </span>
-            <span style={{ color: "#F5B41A" }}>Absolute Ease</span>
-            <span className="text-slate-400 dark:text-slate-500">.</span>
-          </motion.h1>
-
-          {/* Accent divider */}
-          <motion.div {...fadeUp(0.12)} className="mt-8 mb-8 h-[2px] w-12 rounded-full"
-            style={{ background: "linear-gradient(90deg, #F5B41A, #1E6FD9)" }} />
-
-          {/* Sub-copy */}
-          <motion.p {...fadeUp(0.15)}
-            className="text-lg leading-relaxed text-slate-600 dark:text-slate-300"
-            style={{ maxWidth: "42ch" }}>
-            <span className="accent-text font-bold">Iterator</span> unifies restaurants, spas, movies, games &amp; city outings into{" "}
-            <strong className="font-semibold text-slate-800 dark:text-white">one beautifully designed app</strong>{" "}
-            — so you live more and scroll less.
-          </motion.p>
-
-          {/* CTA row */}
-          <motion.div {...fadeUp(0.22)} className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#contact"
-              className="inline-flex items-center gap-2.5 rounded-full px-7 py-3 text-sm font-bold text-white transition-all duration-200 hover:scale-[1.03] active:scale-95"
-              style={{
-                backgroundColor: "#1E6FD9",
-                boxShadow: "0 4px 20px rgba(30,111,217,0.35)",
-              }}>
-              Get Early Access <ArrowRight size={15} />
-            </a>
-            <a href="#features"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 px-7 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all hover:border-slate-300 hover:bg-slate-50 dark:hover:bg-white/5">
-              See How It Works
-            </a>
-          </motion.div>
-
-          {/* Category chips */}
-          <motion.div {...fadeUp(0.30)} className="mt-10 flex flex-wrap gap-2.5">
-            {heroCats.map(({ label, icon: Icon, color }) => (
-              <span key={label}
-                className="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[11px] font-semibold backdrop-blur-sm transition-all hover:scale-105"
-                style={{
-                  borderColor: `${color}30`,
-                  background: `${color}0d`,
-                  color: color,
-                }}>
-                <Icon size={11} aria-hidden /> {label}
+      <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 py-20 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-center min-h-[90vh]">
+          
+          {/* Left Content - Premium Typography */}
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg mx-auto lg:mx-0 z-20"
+          >
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-slate-900/[0.03] dark:bg-white/[0.05] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 border border-slate-900/5 dark:border-white/10">
+                <Sparkles size={14} className="text-amber-500" />
+                The Future of Lifestyle Booking
               </span>
-            ))}
+            </motion.div>
+
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl font-black tracking-tight text-[#1D1D1F] dark:text-[#F5F5F7] sm:text-6xl lg:text-[5.5rem] leading-[1.1]"
+            >
+              Plan Less. <br />
+              <span 
+                className="bg-clip-text text-transparent animate-gradient-x"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, #D99A10, #1B5FCC, #D99A10)",
+                  backgroundSize: "200% auto",
+                  willChange: "background-position",
+                }}
+              >
+                Experience More.
+              </span>
+            </motion.h1>
+
+            <motion.p 
+              variants={itemVariants}
+              className="mt-8 text-lg sm:text-xl font-medium text-[#86868B] dark:text-slate-400 leading-relaxed max-w-md"
+            >
+              Curated dining, exclusive activities, and seamless itineraries. 
+              The all-in-one app for your best life.
+            </motion.p>
+
+            <motion.div 
+              variants={itemVariants}
+              className="mt-10 flex flex-col items-center gap-6 sm:flex-row"
+            >
+              <Link
+                href="/early-access"
+                className="group relative flex items-center gap-2 rounded-full bg-[#0071E3] px-10 py-4 text-lg font-bold text-white transition-all hover:bg-[#0077ED] hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
+              >
+                Join the Waitlist
+                <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              
+              <Link
+                href="/business"
+                className="text-[#0066CC] dark:text-[#2997FF] text-lg font-semibold hover:underline flex items-center gap-1"
+              >
+                For Businesses <ArrowRight size={18} />
+              </Link>
+            </motion.div>
           </motion.div>
+
+          {/* Right Gallery - Apple-Style Gallery Cluster */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.21, 0.45, 0.32, 0.9], delay: 0.2 }}
+            className="relative w-full h-full flex items-center justify-center overflow-visible will-change-transform"
+          >
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-center w-full max-w-4xl mx-auto py-10 lg:py-0 h-auto">
+              
+              {/* Column 1 - Left Column */}
+              <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 -translate-y-8 lg:-translate-y-12">
+                <motion.div 
+                  style={{ y: y1 }}
+                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                >
+                  <img src="/lifestyle-4.png" alt="Spa" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Spa</span>
+                  </div>
+                </motion.div>
+                <motion.div 
+                  style={{ y: y2 }}
+                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                >
+                  <img src="/lifestyle-2.png" alt="Movies" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Movies</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Column 2 - Middle Column */}
+              <div className="flex flex-col">
+                <motion.div 
+                  style={{ y: y3 }}
+                  className="group relative aspect-[3/5] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] dark:shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/20 dark:border-white/5 will-change-transform"
+                >
+                  <img src="/lifestyle-1.png" alt="Dining" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="rounded-full bg-white/95 dark:bg-white/10 px-6 py-2.5 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white backdrop-blur-xl border border-white/20">Dining</span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Column 3 - Right Column */}
+              <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 translate-y-8 lg:translate-y-12">
+                <motion.div 
+                  style={{ y: y4 }}
+                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                >
+                  <img src="/lifestyle-sports.png" alt="Sports" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Sports</span>
+                  </div>
+                </motion.div>
+                <motion.div 
+                  style={{ y: y5 }}
+                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                >
+                  <img src="/lifestyle-3.png" alt="Games" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Games</span>
+                  </div>
+                </motion.div>
+              </div>
+
+            </div>
+          </motion.div>
+
         </div>
+      </div>
 
-        {/* ── Right: phone ── */}
-        <motion.div
-          className="flex justify-center lg:justify-end"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}>
-          <PhoneMockup />
-        </motion.div>
-
+      {/* Scroll Hint */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#86868B] pointer-events-none">
+        <ChevronDown className="animate-bounce" size={24} />
       </div>
     </section>
   );

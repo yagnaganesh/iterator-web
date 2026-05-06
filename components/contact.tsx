@@ -15,8 +15,9 @@ export function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const submitted = useContactStore((state) => state.submitted);
   const setSubmitted = useContactStore((state) => state.setSubmitted);
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") || "").trim();
@@ -28,8 +29,27 @@ export function Contact() {
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
-      setSubmitted(true);
-      event.currentTarget.reset();
+      setLoading(true);
+      const formData = new URLSearchParams();
+      formData.append("formType", "Contact");
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("message", String(form.get("message") || ""));
+
+      try {
+        await fetch("https://script.google.com/macros/s/AKfycby_LN3bJAlqf_1gIt2Eua0aD1yOJJ6WyIWM-TplreTazFkJjx-QHazyOC5KcKbBUgw/exec", {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        });
+        setSubmitted(true);
+        event.currentTarget.reset();
+      } catch (error) {
+        console.error(error);
+        alert("Failed to send message. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     }
   }
 
@@ -128,12 +148,13 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="mt-8 group relative w-full h-14 overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold transition-all hover:scale-[1.02] active:scale-95"
+                disabled={loading}
+                className="mt-8 group relative w-full h-14 overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-2">
-                  Send Message
-                  <Send aria-hidden="true" size={17} className="transition-transform group-hover:translate-x-1" />
+                  {loading ? "Sending..." : "Send Message"}
+                  {!loading && <Send aria-hidden="true" size={17} className="transition-transform group-hover:translate-x-1" />}
                 </span>
               </button>
 

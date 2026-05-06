@@ -3,6 +3,7 @@ import { CalendarCheck, Compass, HeartHandshake, MapPinned, Martini, Sparkles } 
 export const navItems = [
   { label: "Explore", href: "/#features" },
   { label: "For Businesses", href: "/business" },
+  { label: "Early Access", href: "/early-access" },
   { label: "Contact", href: "/contact" },
 ];
 

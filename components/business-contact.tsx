@@ -63,6 +63,7 @@ export function BusinessContact() {
   const [selected, setSelected] = useState<string>("");
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function validate(form: FormData): Errors {
     const errs: Errors = {};
@@ -86,15 +87,43 @@ export function BusinessContact() {
     return errs;
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    const formRef = e.currentTarget;
+    const form = new FormData(formRef);
     const errs = validate(form);
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
-      setSubmitted(true);
-      e.currentTarget.reset();
-      setSelected("");
+      setLoading(true);
+      try {
+        const formData = new URLSearchParams();
+        formData.append("formType", "Business");
+        formData.append("name", String(form.get("businessName") || ""));
+        formData.append("email", String(form.get("email") || ""));
+        formData.append("address", String(form.get("address") || ""));
+        formData.append("message", `
+Category: ${selected || "Not Selected"}
+Contact Person: ${form.get("contactName")}
+Phone: ${form.get("phone")}
+Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
+        `.trim());
+
+        // Send to Google Apps Script
+        await fetch("https://script.google.com/macros/s/AKfycby_LN3bJAlqf_1gIt2Eua0aD1yOJJ6WyIWM-TplreTazFkJjx-QHazyOC5KcKbBUgw/exec", {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        });
+
+        setSubmitted(true);
+        formRef.reset();
+        setSelected("");
+      } catch (error: any) {
+        console.error("Submission error:", error);
+        alert(`Form submission failed: ${error.message || "Unknown Error"}. Please check your internet connection or try again later.`);
+      } finally {
+        setLoading(false);
+      }
     }
   }
 
@@ -272,12 +301,22 @@ export function BusinessContact() {
 
               <button
                 type="submit"
-                className="mt-12 group relative w-full h-14 overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold transition-all hover:scale-[1.02] active:scale-95"
+                disabled={loading}
+                className="mt-12 group relative w-full h-14 overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative flex items-center justify-center gap-2">
-                  Partner with Iterator
-                  <Send size={18} className="transition-transform group-hover:translate-x-1" />
+                  {loading ? (
+                    <>
+                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-slate-400 border-t-white dark:border-slate-300 dark:border-t-slate-900" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Partner with Iterator
+                      <Send size={18} className="transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
                 </span>
               </button>
 

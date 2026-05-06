@@ -113,7 +113,7 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
       initial={cat.entrance}
       animate={forceTrigger !== false ? { x: 0, y: 0, scale: 1, rotate: 0, opacity: 1 } : cat.entrance}
       exit={{ opacity: 0, filter: "blur(15px)", scale: 1.1 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
     >
       {/* ── Background decoration ── */}
       <div
@@ -138,9 +138,10 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
       <div className="relative z-10 max-w-3xl text-center lg:text-left">
         <motion.div
           className="flex flex-col items-center lg:items-start"
-          initial={{ opacity: 0, y: 20 }}
-          animate={forceTrigger !== false ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
           {/* Large, powerful category name in neutral color */}
           <h1
@@ -150,12 +151,13 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
             {cat.label}
           </h1>
           
-          {/*catchy phrase in neutral color and italic, slightly smaller and offset */}
+          {/* catchy phrase */}
           <motion.p
             className="mt-4 text-xl font-semibold italic text-slate-500 dark:text-slate-400 sm:text-2xl lg:text-3xl"
-            initial={{ opacity: 0, x: -10 }}
-            animate={forceTrigger !== false ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             {cat.headline}
           </motion.p>
@@ -167,7 +169,8 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
         <motion.p
           className="mt-8 max-w-xl text-base leading-[1.8] text-slate-600 dark:text-slate-400 sm:text-lg"
           initial={{ opacity: 0 }}
-          animate={forceTrigger !== false ? { opacity: 1 } : { opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
           {cat.desc}
@@ -202,6 +205,10 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
             border: `1px solid ${cat.accent}44`,
             boxShadow: `0 0 40px ${cat.accent}22`,
           }}
+          initial={{ scale: 0, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
           animate={forceTrigger !== false ? cat.ambient : {}}
         >
           <Icon size={44} style={{ color: cat.accent }} aria-hidden="true" />
@@ -216,14 +223,21 @@ export function CategoryShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use a stable default (true) for SSR and initial client render to prevent hydration mismatch
+  const isDark = mounted ? resolvedTheme === "dark" : true;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  const isInView = useInView(containerRef, { once: false, amount: 0.1 });
+  const isInView = useInView(containerRef, { once: false, amount: 0 });
 
   useEffect(() => {
     return scrollYProgress.on("change", (v) => {
@@ -237,7 +251,7 @@ export function CategoryShowcase() {
   const glow2 = isDark ? cat.glow2 : cat.glow2L;
 
   return (
-    <div ref={containerRef} style={{ height: `${CATS.length * 100}vh` }}>
+    <div id="features" ref={containerRef} style={{ height: `${CATS.length * 100}vh` }}>
       <div className="sticky top-0 h-screen overflow-hidden bg-white dark:bg-[#05080f]">
 
         {/* ── Global background glow ── */}
@@ -251,7 +265,7 @@ export function CategoryShowcase() {
         />
 
         {/* ── category slides ── */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           <Slide key={cat.key} cat={cat} isDark={isDark} forceTrigger={isInView} />
         </AnimatePresence>
 

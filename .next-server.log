@@ -1,0 +1,129 @@
+
+> iterator-web@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.29.233:3000
+
+ ✓ Starting...
+ ✓ Ready in 1821ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1241ms (1492 modules)
+ GET / 200 in 16[?25h
+�� Compiled in 1312ms (1506 modules)
+ ✓ Compiled in 233ms (681 modules)
+ GET / 200 in 225ms
+ GET / 200 in 15ms
+ ✓ Compiled in 542ms (1506 modules)
+ GET / 200 in 157ms
+ GET / 200 in 276ms
+ ✓ Compiled in 624ms (1506 modules)
+ GET / 200 in 133ms
+ GET / 200 in 98ms
+ GET / 200 in 223ms
+ GET / 200 in 413ms
+ GET / 200 in 275ms
+ ✓ Compiled in 935ms (1506 modules)
+ GET / 200 in 160ms
+ GET / 200 in 458ms
+ ✓ Compiled in 709ms (1506 modules)
+ GET / 200 in 94ms
+ GET / 200 in 227ms
+ ✓ Compiled in 812ms (1506 modules)
+ ✓ Compiled in 434ms (681 modules)
+ GET / 200 in 412ms
+ GET / 200 in 35ms
+ ✓ Compiled in 985ms (1506 modules)
+ GET / 200 in 89ms
+ GET / 200 in 304ms
+ ✓ Compiled in 893ms (1506 modules)
+ GET / 200 in 227ms
+ GET / 200 in 253ms
+ ✓ Compiled in 805ms (1506 modules)
+ GET / 200 in 339ms
+ ✓ Compiled in 635ms (1506 modules)
+ GET / 200 in 192ms
+ ○ Compiling /business ...
+ ✓ Compiled /business in 1855ms (1540 modules)
+ GET /business 200 in 2229ms
+ GET /business 200 in 22ms
+ GET /business 200 in 34ms
+ ✓ Compiled in 864ms (1526 modules)
+ GET /business 200 in 84ms
+ ✓ Compiled in 479ms (1540 modules)
+ GET /business 200 in 103ms
+ GET / 200 in 98ms
+ GET / 200 in 324ms
+ ✓ Compiled in 824ms (1540 modules)
+ GET / 200 in 81ms
+ ⨯ ./components/header.tsx
+Error:   [31mx[0m Expected '</', got 'key'
+    ,-[[36;1;4m/Users/yagnaganesh/Desktop/company_proj/Iterator_web/components/header.tsx[0m:39:1]
+ [2m36[0m |               return (
+ [2m37[0m |                 {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+ [2m38[0m |                 <a
+ [2m39[0m |                   key={item.href}
+    : [35;1m                  ^^^[0m
+ [2m40[0m |                   href={item.href}
+ [2m41[0m |                   className="text-base font-medium transition-opacity hover:opacity-60"
+ [2m42[0m |                   style={{ color: "#A1A1A6" }}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/header.tsx
+./app/business/page.tsx
+ ✓ Compiled in 217ms (667 modules)
+ ○ Compiling /_error ...
+ ⨯ ./components/header.tsx
+Error:   [31mx[0m Expected '</', got 'key'
+    ,-[[36;1;4m/Users/yagnaganesh/Desktop/company_proj/Iterator_web/components/header.tsx[0m:39:1]
+ [2m36[0m |               return (
+ [2m37[0m |                 {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+ [2m38[0m |                 <a
+ [2m39[0m |                   key={item.href}
+    : [35;1m                  ^^^[0m
+ [2m40[0m |                   href={item.href}
+ [2m41[0m |                   className="text-base font-medium transition-opacity hover:opacity-60"
+ [2m42[0m |                   style={{ color: "#A1A1A6" }}
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/header.tsx
+./app/page.tsx
+ GET / 500 in 2257ms
+ GET / 500 in 10ms
+ GET / 500 in 8ms
+ GET / 500 in 6ms
+ GET / 500 in 13ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 500 in 278ms
+ ✓ Compiled /_error in 1409ms (1886 modules)
+ ✓ Compiled (1872 modules)
+ GET / 200 in 1531ms
+ ✓ Compiled in 814ms (1790 modules)
+ GET / 200 in 160ms
+ ✓ Compiled in 815ms (1790 modules)
+ GET / 200 in 185ms
+ ✓ Compiled in 783ms (1790 modules)
+ GET / 200 in 89ms
+ ✓ Compiled in 443ms (1790 modules)
+ GET / 200 in 65ms
+ GET / 200 in 258ms
+ ✓ Compiled in 924ms (1790 modules)
+ ✓ Compiled in 131ms (847 modules)
+ GET / 200 in 331ms
+ GET / 200 in 152ms
+ GET / 200 in 119ms
+ GET / 200 in 88ms
+ GET / 200 in 93ms
+ ✓ Compiled in 4.5s (1790 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/yagnaganesh/Desktop/company_proj/Iterator_web/.next/cache/webpack/client-development/7.pack.gz_' -> '/Users/yagnaganesh/Desktop/company_proj/Iterator_web/.next/cache/webpack/client-development/7.pack.gz'
+ ✓ Compiled in 5.2s (1790 modules)
