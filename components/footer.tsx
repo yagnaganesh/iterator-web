@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
-        <p>© 2026 Iterator.</p>
+        <p>© 2026 Iterator. <span className="opacity-30 ml-2">v1.1.2-sync</span></p>
         <div className="flex flex-wrap gap-5">
           {navItems.map((item) => {
             if (item.href.startsWith("mailto:") || item.href.startsWith("http")) {
