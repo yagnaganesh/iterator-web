@@ -119,11 +119,11 @@ function SelectScreen({
   return (
     <motion.div className="flex h-full flex-col overflow-y-auto px-3 pt-1 pb-2 no-scrollbar"
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.08 }}>
-      <p style={{ color: muted, fontSize: 10 }}>Good morning ✨</p>
-      <p style={{ color: txt, fontSize: 16, fontWeight: 800, marginBottom: 10, letterSpacing: "-0.01em" }}>What&apos;s your vibe?</p>
+      <p style={{ color: muted, fontSize: 8 }}>Good morning ✨</p>
+      <p style={{ color: txt, fontSize: 12.8, fontWeight: 800, marginBottom: 10, letterSpacing: "-0.01em" }}>What&apos;s your vibe?</p>
       {GROUPS.map(g => (
         <div key={g.heading} className="mb-4">
-          <p style={{ color: muted, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6, opacity: 0.8 }}>
+          <p style={{ color: muted, fontSize: 7.6, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 6, opacity: 0.8 }}>
             {g.heading}
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -132,7 +132,7 @@ function SelectScreen({
               const on  = selected.includes(idx);
               return (
                 <motion.span key={c.label}
-                  className="rounded-full border px-2.5 py-0.5 text-[10px] font-medium"
+                  className="rounded-full border px-2.5 py-0.5 text-[8px] font-medium"
                   animate={{
                     borderColor: on ? `${c.accent}80` : (isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)"),
                     background:  on ? `${c.accent}22`  : inact,
@@ -151,7 +151,7 @@ function SelectScreen({
         {selected.length > 0 && (
           <motion.button key="plan-my-day-btn" type="button" onClick={onPlan}
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0, scale: btnTap ? 0.93 : 1 }} exit={{ opacity: 0 }}
-            className="sticky bottom-0 mx-3 mb-2 rounded-full py-2.5 text-center text-[11px] font-bold text-white cursor-pointer"
+            className="sticky bottom-0 mx-3 mb-2 rounded-full py-2.5 text-center text-[8.8px] font-bold text-white cursor-pointer"
             style={{
               background: "linear-gradient(135deg, rgba(30,111,217,0.4) 0%, rgba(30,111,217,0.2) 100%)",
               backdropFilter: "blur(20px)",
@@ -210,14 +210,14 @@ function WalletTicket({
         padding: "4px 9px",
         display: "flex", alignItems: "center", gap: 6,
       }}>
-        <span style={{ fontSize: 12 }}>{item.emoji}</span>
+        <span style={{ fontSize: 9.6 }}>{item.emoji}</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ color: "rgba(0,0,0,0.45)", fontSize: 6, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>{item.cat}</p>
-          <p style={{ color: "#fff", fontSize: 10, fontWeight: 800, lineHeight: 1.2, textShadow: "0 1px 2px rgba(0,0,0,0.2)" }} className="truncate">{item.venue}</p>
+          <p style={{ color: "rgba(0,0,0,0.45)", fontSize: 4.8, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>{item.cat}</p>
+          <p style={{ color: "#fff", fontSize: 8, fontWeight: 800, lineHeight: 1.2, textShadow: "0 1px 2px rgba(0,0,0,0.2)" }} className="truncate">{item.venue}</p>
         </div>
         <div style={{ background: "rgba(255,255,255,0.2)", backdropFilter: "blur(6px)", borderRadius: 20, padding: "1px 5px", display: "flex", alignItems: "center", gap: 2, border: "1px solid rgba(255,255,255,0.3)" }}>
           <CheckCircle2 size={7} color="#fff" />
-          <span style={{ color: "#fff", fontSize: 6.5, fontWeight: 700 }}>OK</span>
+          <span style={{ color: "#fff", fontSize: 5.2, fontWeight: 700 }}>OK</span>
         </div>
       </div>
 
@@ -227,14 +227,14 @@ function WalletTicket({
       {/* Glass body */}
       <div style={{ background: glass, padding: "5px 9px", display: "flex", alignItems: "center", gap: 7 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ color: item.accent, fontSize: 11, fontWeight: 800 }}>{item.time}</p>
+          <p style={{ color: item.accent, fontSize: 8.8, fontWeight: 800 }}>{item.time}</p>
           <div style={{ display: "flex", alignItems: "center", gap: 2, marginTop: 1 }}>
             <MapPin size={6} color={muted} />
-            <p style={{ color: muted, fontSize: 7, fontWeight: 500 }} className="truncate">{item.loc}</p>
+            <p style={{ color: muted, fontSize: 5.6, fontWeight: 500 }} className="truncate">{item.loc}</p>
           </div>
         </div>
         <div style={{ background: `${item.accent}18`, border: `1px solid ${item.accent}35`, borderRadius: 6, padding: "2px 5px", flexShrink: 0 }}>
-          <p style={{ color: item.accent, fontSize: 7.5, fontWeight: 700 }}>{item.dur}</p>
+          <p style={{ color: item.accent, fontSize: 6, fontWeight: 700 }}>{item.dur}</p>
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 1, height: 20, paddingLeft: 4, flexShrink: 0 }}>
           {bars.slice(0, 14).map((b, k) => (
@@ -269,8 +269,8 @@ function BookedScreen({ isDark }: { isDark: boolean }) {
         style={{ padding: "6px 10px 3px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}
       >
         <div>
-          <p style={{ color: muted, fontSize: 8 }}>All set ✓ — Today’s plan</p>
-          <p style={{ color: txt, fontSize: 12, fontWeight: 800 }}>Your Tickets 🎟️</p>
+          <p style={{ color: muted, fontSize: 6.4 }}>All set ✓ — Today’s plan</p>
+          <p style={{ color: txt, fontSize: 9.6, fontWeight: 800 }}>Your Tickets 🎟️</p>
         </div>
         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.12, type: "spring", bounce: 0.5 }}
           style={{
@@ -281,7 +281,7 @@ function BookedScreen({ isDark }: { isDark: boolean }) {
             display: "flex", alignItems: "center", gap: 2,
           }}>
           <CheckCircle2 size={7} color="#34d399" />
-          <span style={{ color: "#34d399", fontSize: 7, fontWeight: 700 }}>5 Confirmed</span>
+          <span style={{ color: "#34d399", fontSize: 5.6, fontWeight: 700 }}>5 Confirmed</span>
         </motion.div>
       </motion.div>
 
@@ -304,7 +304,7 @@ function BookedScreen({ isDark }: { isDark: boolean }) {
           }}
         >
           <QrCode size={16} color={isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)"} strokeWidth={1.5} />
-          <p style={{ color: muted, fontSize: 7, letterSpacing: "0.07em" }}>Iterator Pass · ITR-2025-BLR-00419</p>
+          <p style={{ color: muted, fontSize: 5.6, letterSpacing: "0.07em" }}>Iterator Pass · ITR-2025-BLR-00419</p>
         </motion.div>
       </div>
     </motion.div>
@@ -385,7 +385,7 @@ export function PhoneMockup() {
       <div className="absolute inset-[6px] overflow-hidden rounded-[38px]" style={{ background: screenBg }}>
         <div className="absolute left-1/2 top-3 z-10 h-6 w-20 -translate-x-1/2 rounded-full"
           style={{ background: isDark ? "#000" : "#111" }} />
-        <div className="absolute left-5 right-5 top-2 z-10 flex justify-between text-[9px] font-bold"
+        <div className="absolute left-5 right-5 top-2 z-10 flex justify-between text-[7.2px] font-bold"
           style={{ color: isDark ? "rgba(255,255,255,0.28)" : "rgba(0,0,0,0.28)" }}>
           <span>9:41</span><span>▮▮▮</span>
         </div>

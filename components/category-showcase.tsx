@@ -145,7 +145,7 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
         >
           {/* Large, powerful category name in neutral color */}
           <h1
-            className="text-[clamp(3rem,10vw,8rem)] font-black tracking-tighter"
+            className="text-[clamp(2.4rem,6.2vw,5.8rem)] font-black tracking-tight"
             style={{ lineHeight: 0.9, color: cat.accent }}
           >
             {cat.label}
@@ -153,7 +153,7 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
           
           {/* catchy phrase */}
           <motion.p
-            className="mt-4 text-xl font-semibold italic text-slate-500 dark:text-slate-400 sm:text-2xl lg:text-3xl"
+            className="mt-3 text-lg font-semibold italic text-slate-500 dark:text-slate-400 sm:text-xl lg:text-2xl"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -167,7 +167,7 @@ function Slide({ cat, isDark, forceTrigger }: { cat: Cat; isDark: boolean; force
         </motion.div>
 
         <motion.p
-          className="mt-8 max-w-xl text-base leading-[1.8] text-slate-600 dark:text-slate-400 sm:text-lg"
+          className="mt-6 max-w-xl text-sm leading-[1.75] text-slate-600 dark:text-slate-400 sm:text-base"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.2 }}

@@ -27,7 +27,7 @@
 
 html {
   /* Anchor for all Tailwind rem-based text/spacing (text-*, leading-*, etc.) */
-  font-size: 16px;
+  font-size: 12.8px;
   scroll-behavior: smooth;
   background: var(--background);
   -webkit-text-size-adjust: 100%;

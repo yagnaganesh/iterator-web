@@ -72,11 +72,11 @@ export default function MapRouteScreen({ isDark, onBook }: { isDark: boolean; on
             >
               <div className="mb-0.5 rounded-md border px-1.5 py-0.5 backdrop-blur-md whitespace-nowrap"
                 style={{ background: `${s.accent}30`, borderColor: `${s.accent}70` }}>
-                <p style={{ color: s.accent, fontSize: 7, fontWeight: 700 }}>{s.label}</p>
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 6 }}>{s.sub}</p>
+                <p style={{ color: s.accent, fontSize: 5.6, fontWeight: 700 }}>{s.label}</p>
+                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 4.8 }}>{s.sub}</p>
               </div>
               <div className="mx-auto flex items-center justify-center rounded-full"
-                style={{ width: 18, height: 18, background: s.accent, boxShadow: `0 0 10px ${s.accent}, 0 2px 6px rgba(0,0,0,0.3)`, color: "#fff", fontSize: 9, fontWeight: 800 }}>
+                style={{ width: 18, height: 18, background: s.accent, boxShadow: `0 0 10px ${s.accent}, 0 2px 6px rgba(0,0,0,0.3)`, color: "#fff", fontSize: 7.2, fontWeight: 800 }}>
                 {i + 1}
               </div>
               <div className="mx-auto" style={{ width: 0, height: 0, borderLeft: "4px solid transparent", borderRight: "4px solid transparent", borderTop: `6px solid ${s.accent}` }} />
@@ -97,12 +97,12 @@ export default function MapRouteScreen({ isDark, onBook }: { isDark: boolean; on
         }}
       >
         <div>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 7.5 }}>Your plan is ready</p>
-          <p style={{ color: "#fff", fontSize: 12, fontWeight: 700 }}>Today&apos;s Route</p>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 6 }}>Your plan is ready</p>
+          <p style={{ color: "#fff", fontSize: 9.6, fontWeight: 700 }}>Today&apos;s Route</p>
         </div>
         <div className="flex gap-1">
           {STOPS.map((s, i) => (
-            <div key={i} className="flex h-4 w-4 items-center justify-center rounded-full text-[7px] font-bold"
+            <div key={i} className="flex h-4 w-4 items-center justify-center rounded-full text-[5.6px] font-bold"
               style={{
                 background: i < revealedPins ? s.accent : "rgba(255,255,255,0.12)",
                 color: i < revealedPins ? "#fff" : "rgba(255,255,255,0.35)",
@@ -120,7 +120,7 @@ export default function MapRouteScreen({ isDark, onBook }: { isDark: boolean; on
           <motion.button key="book-btn-bottom" onClick={onBook}
             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}
             whileTap={{ scale: 0.95 }} transition={{ type: "spring", bounce: 0.5 }}
-            className="absolute bottom-3 left-3 right-3 rounded-full py-2.5 text-center text-[11px] font-bold text-white cursor-pointer"
+            className="absolute bottom-3 left-3 right-3 rounded-full py-2.5 text-center text-[8.8px] font-bold text-white cursor-pointer"
             style={{
               background: "linear-gradient(135deg, rgba(30,111,217,0.5) 0%, rgba(30,111,217,0.3) 100%)",
               backdropFilter: "blur(20px)",

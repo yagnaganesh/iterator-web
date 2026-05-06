@@ -65,7 +65,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg mx-auto lg:mx-0 z-20"
+            className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg mx-auto lg:mx-0 lg:pl-10 xl:pl-16 z-20"
           >
             <motion.div variants={itemVariants} className="mb-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-slate-900/[0.03] dark:bg-white/[0.05] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 border border-slate-900/5 dark:border-white/10">
@@ -76,7 +76,7 @@ export function Hero() {
 
             <motion.h1 
               variants={itemVariants}
-              className="text-[clamp(40px,6vw,72px)] font-black tracking-tight text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.05]"
+              className="text-[clamp(32px,4.8vw,57.6px)] font-black tracking-tight text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.05]"
             >
               Plan Less. <br />
               <span 
@@ -135,22 +135,22 @@ export function Hero() {
               <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 -translate-y-8 lg:-translate-y-12">
                 <motion.div 
                   style={{ y: y1 }}
-                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/15 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_28px_60px_rgba(0,0,0,0.5)] [transform:perspective(1200px)_rotateY(-6deg)_rotateX(3deg)_translateZ(0)] hover:[transform:perspective(1200px)_rotateY(-10deg)_rotateX(4deg)_translateZ(20px)] transition-transform duration-500 will-change-transform"
                 >
-                  <Image src="/lifestyle-4.png" alt="Spa" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <Image src="/lifestyle-4.png" alt="Spa" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform dark:brightness-110 dark:saturate-125" priority />
+                  <div className="absolute inset-0 bg-black/[0.08] dark:bg-transparent group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Spa</span>
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[8px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Spa</span>
                   </div>
                 </motion.div>
                 <motion.div 
                   style={{ y: y2 }}
-                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/15 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_28px_60px_rgba(0,0,0,0.5)] [transform:perspective(1200px)_rotateY(-5deg)_rotateX(2deg)_translateZ(0)] hover:[transform:perspective(1200px)_rotateY(-9deg)_rotateX(3deg)_translateZ(20px)] transition-transform duration-500 will-change-transform"
                 >
-                  <Image src="/lifestyle-2.png" alt="Movies" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <Image src="/lifestyle-2.png" alt="Movies" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform dark:brightness-110 dark:saturate-125" priority />
+                  <div className="absolute inset-0 bg-black/[0.08] dark:bg-transparent group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Movies</span>
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[8px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Movies</span>
                   </div>
                 </motion.div>
               </div>
@@ -159,9 +159,9 @@ export function Hero() {
               <div className="flex flex-col">
                 <motion.div 
                   style={{ y: y3 }}
-                  className="group relative aspect-[3/5] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] dark:shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/20 dark:border-white/5 will-change-transform"
+                  className="group relative aspect-[3/5] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_50px_100px_rgba(0,0,0,0.55)] border border-white/20 dark:border-white/15 [transform:perspective(1400px)_rotateY(0deg)_rotateX(2deg)_translateZ(0)] hover:[transform:perspective(1400px)_rotateY(0deg)_rotateX(5deg)_translateZ(24px)] transition-transform duration-500 will-change-transform"
                 >
-                  <Image src="/lifestyle-1.png" alt="Dining" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
+                  <Image src="/lifestyle-1.png" alt="Dining" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform dark:brightness-110 dark:saturate-125" priority />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity" />
                   <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/95 dark:bg-white/10 px-6 py-2.5 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white backdrop-blur-xl border border-white/20">Dining</span>
@@ -173,22 +173,22 @@ export function Hero() {
               <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 translate-y-8 lg:translate-y-12">
                 <motion.div 
                   style={{ y: y4 }}
-                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                  className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/15 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_28px_60px_rgba(0,0,0,0.5)] [transform:perspective(1200px)_rotateY(5deg)_rotateX(2deg)_translateZ(0)] hover:[transform:perspective(1200px)_rotateY(9deg)_rotateX(3deg)_translateZ(20px)] transition-transform duration-500 will-change-transform"
                 >
-                  <Image src="/lifestyle-sports.png" alt="Sports" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <Image src="/lifestyle-sports.png" alt="Sports" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform dark:brightness-110 dark:saturate-125" priority />
+                  <div className="absolute inset-0 bg-black/[0.08] dark:bg-transparent group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Sports</span>
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[8px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Sports</span>
                   </div>
                 </motion.div>
                 <motion.div 
                   style={{ y: y5 }}
-                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
+                  className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/15 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_28px_60px_rgba(0,0,0,0.5)] [transform:perspective(1200px)_rotateY(6deg)_rotateX(3deg)_translateZ(0)] hover:[transform:perspective(1200px)_rotateY(10deg)_rotateX(4deg)_translateZ(20px)] transition-transform duration-500 will-change-transform"
                 >
-                  <Image src="/lifestyle-3.png" alt="Games" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                  <Image src="/lifestyle-3.png" alt="Games" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform dark:brightness-110 dark:saturate-125" priority />
+                  <div className="absolute inset-0 bg-black/[0.08] dark:bg-transparent group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Games</span>
+                    <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[8px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Games</span>
                   </div>
                 </motion.div>
               </div>

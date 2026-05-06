@@ -50,7 +50,7 @@ export function Header() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`relative text-[13px] font-semibold tracking-wide transition-all hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] ${
+                  className={`relative text-[10.4px] font-semibold tracking-wide transition-all hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] ${
                     isExperienceMore 
                     ? "bg-clip-text text-transparent animate-gradient-x font-bold" 
                     : "text-[#86868B]"
@@ -68,7 +68,7 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative text-[13px] font-semibold tracking-wide transition-all hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] group ${
+                className={`relative text-[10.4px] font-semibold tracking-wide transition-all hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] group ${
                   isExperienceMore 
                   ? "bg-clip-text text-transparent animate-gradient-x font-bold" 
                   : "text-[#86868B]"
@@ -92,7 +92,7 @@ export function Header() {
           <ThemeToggle />
           <Link 
             href="/early-access"
-            className="hidden sm:inline-flex rounded-full bg-[#0071E3] px-4 py-1.5 text-[12px] font-bold text-white transition-all hover:bg-[#0077ED] hover:scale-105 active:scale-95"
+            className="hidden sm:inline-flex rounded-full bg-[#0071E3] px-4 py-1.5 text-[9.6px] font-bold text-white transition-all hover:bg-[#0077ED] hover:scale-105 active:scale-95"
           >
             Get Early Access
           </Link>
