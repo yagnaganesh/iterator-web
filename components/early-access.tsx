@@ -108,13 +108,13 @@ export function EarlyAccess() {
               <div className="space-y-6">
                 <label className="block">
                   <span className={labelClass}>Your Name</span>
-                  <input name="name" className={inputClass} placeholder="Alex Rivera" />
+                  <input name="name" className={inputClass} placeholder="Your name" />
                   {errors.name && <span className="mt-1.5 block text-xs font-medium text-rose-500">{errors.name}</span>}
                 </label>
 
                 <label className="block">
                   <span className={labelClass}>Email Address</span>
-                  <input name="email" type="email" className={inputClass} placeholder="alex@example.com" />
+                  <input name="email" type="email" className={inputClass} placeholder="you@example.com" />
                   {errors.email && <span className="mt-1.5 block text-xs font-medium text-rose-500">{errors.email}</span>}
                 </label>
 

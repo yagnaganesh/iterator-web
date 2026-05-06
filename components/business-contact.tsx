@@ -204,7 +204,11 @@ Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
                 {businessTypes.map(({ value, label, icon: Icon }) => (
                   <button
                     key={value}
-                    onClick={() => setSelected(value)}
+                    type="button"
+                    onClick={() => {
+                      setSelected(value);
+                      setErrors((prev) => ({ ...prev, businessType: undefined }));
+                    }}
                     className={`group flex w-full items-center gap-4 rounded-xl border p-4 text-left transition-all duration-300 ${
                       selected === value
                         ? "border-cyan-500/50 bg-cyan-500/10 text-slate-900 dark:text-white shadow-lg shadow-cyan-500/5"
@@ -224,6 +228,7 @@ Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
                   </button>
                 ))}
               </div>
+              {errors.businessType && <span className={errorClass}>{errors.businessType}</span>}
             </div>
           </div>
 
@@ -246,7 +251,7 @@ Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
                   <label className={labelClass}>Business Name</label>
                   <div className="relative">
                     <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
-                    <input name="businessName" className={`${fieldClass} pl-12`} placeholder="The Grand Rooftop" />
+                    <input name="businessName" className={`${fieldClass} pl-12`} placeholder="Your business name" />
                   </div>
                   {errors.businessName && <span className={errorClass}>{errors.businessName}</span>}
                 </div>
@@ -255,14 +260,14 @@ Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
                   <label className={labelClass}>Business Address</label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
-                    <input name="address" className={`${fieldClass} pl-12`} placeholder="MG Road, Bangalore" />
+                    <input name="address" className={`${fieldClass} pl-12`} placeholder="Your business address" />
                   </div>
                   {errors.address && <span className={errorClass}>{errors.address}</span>}
                 </div>
 
                 <div>
                   <label className={labelClass}>Contact Person</label>
-                  <input name="contactName" className={fieldClass} placeholder="Ravi Sharma" />
+                  <input name="contactName" className={fieldClass} placeholder="Your name" />
                   {errors.contactName && <span className={errorClass}>{errors.contactName}</span>}
                 </div>
 
@@ -279,7 +284,7 @@ Preferred Visit: ${form.get("visitDate")} at ${form.get("visitTime")}
                   <label className={labelClass}>Business Email</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
-                    <input name="email" type="email" className={`${fieldClass} pl-12`} placeholder="hello@bistro.com" />
+                    <input name="email" type="email" className={`${fieldClass} pl-12`} placeholder="you@example.com" />
                   </div>
                   {errors.email && <span className={errorClass}>{errors.email}</span>}
                 </div>

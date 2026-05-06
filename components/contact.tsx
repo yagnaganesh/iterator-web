@@ -19,7 +19,8 @@ export function Contact() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formRef = event.currentTarget;
+    const form = new FormData(formRef);
     const name = String(form.get("name") || "").trim();
     const email = String(form.get("email") || "").trim();
     const nextErrors: Errors = {};
@@ -43,7 +44,7 @@ export function Contact() {
           body: formData,
         });
         setSubmitted(true);
-        event.currentTarget.reset();
+        formRef.reset();
       } catch (error) {
         console.error(error);
         alert("Failed to send message. Please try again later.");
@@ -109,7 +110,7 @@ export function Contact() {
                     aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? "name-error" : undefined}
                     className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950/50 px-4 py-3 text-slate-900 dark:text-white outline-none transition placeholder:text-slate-400 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/5 dark:focus:border-amber-400/50"
-                    placeholder="Maya Shah"
+                    placeholder="Your name"
                   />
                   {errors.name ? (
                     <span id="name-error" className="mt-2 block text-xs font-medium text-rose-600 dark:text-rose-400">
@@ -126,7 +127,7 @@ export function Contact() {
                     aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? "email-error" : undefined}
                     className="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950/50 px-4 py-3 text-slate-900 dark:text-white outline-none transition placeholder:text-slate-400 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/5 dark:focus:border-amber-400/50"
-                    placeholder="maya@company.com"
+                    placeholder="you@example.com"
                   />
                   {errors.email ? (
                     <span id="email-error" className="mt-2 block text-xs font-medium text-rose-600 dark:text-rose-400">
