@@ -76,7 +76,7 @@ export function Hero() {
 
             <motion.h1 
               variants={itemVariants}
-              className="text-[clamp(2.5rem,8vw,5.5rem)] font-black tracking-tight text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.1]"
+              className="text-[clamp(2.25rem,6.5vw,4.5rem)] font-black tracking-tight text-[#1D1D1F] dark:text-[#F5F5F7] leading-[1.05]"
             >
               Plan Less. <br />
               <span 
