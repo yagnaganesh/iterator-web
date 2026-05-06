@@ -12,8 +12,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  CalendarDays,
-  Clock,
   Send,
   CheckCircle2,
   TrendingUp,
@@ -79,7 +77,7 @@ export function BusinessContact() {
     if (businessName.length < 2) errs.businessName = "Enter your business name.";
     if (!businessType) errs.businessType = "Select a business type.";
     if (address.length < 5) errs.address = "Enter your business address.";
-    if (contactName.length < 2) errs.contactName = "Enter contact person's name.";
+    if (contactName.length < 2) errs.contactName = "Enter contact person&apos;s name.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = "Enter a valid email.";
     if (phone && !/^[+\d\s\-().]{7,}$/.test(phone)) errs.phone = "Enter a valid phone number.";
     if (!visitDate) errs.visitDate = "Choose a preferred visit date.";

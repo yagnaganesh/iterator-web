@@ -2,8 +2,8 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
-import { useMemo } from "react";
 
 // Parent stagger container
 const containerVariants = {
@@ -32,11 +32,6 @@ const itemVariants = {
 export function Hero() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
-  // Define springs at the top level to avoid re-creation
-  const springConfig = { stiffness: 60, damping: 25 };
-  const mouseX = useSpring(x, springConfig);
-  const mouseY = useSpring(y, springConfig);
 
   // Individual tile springs for specific vertical offsets
   const y1 = useSpring(y, { stiffness: 35, damping: 20 });
@@ -140,7 +135,7 @@ export function Hero() {
                   style={{ y: y1 }}
                   className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
                 >
-                  <img src="/lifestyle-4.png" alt="Spa" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <Image src="/lifestyle-4.png" alt="Spa" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Spa</span>
@@ -150,7 +145,7 @@ export function Hero() {
                   style={{ y: y2 }}
                   className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
                 >
-                  <img src="/lifestyle-2.png" alt="Movies" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <Image src="/lifestyle-2.png" alt="Movies" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Movies</span>
@@ -164,7 +159,7 @@ export function Hero() {
                   style={{ y: y3 }}
                   className="group relative aspect-[3/5] rounded-[2.5rem] sm:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] dark:shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/20 dark:border-white/5 will-change-transform"
                 >
-                  <img src="/lifestyle-1.png" alt="Dining" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <Image src="/lifestyle-1.png" alt="Dining" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity" />
                   <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/95 dark:bg-white/10 px-6 py-2.5 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white backdrop-blur-xl border border-white/20">Dining</span>
@@ -178,7 +173,7 @@ export function Hero() {
                   style={{ y: y4 }}
                   className="group relative aspect-[3/2.2] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
                 >
-                  <img src="/lifestyle-sports.png" alt="Sports" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <Image src="/lifestyle-sports.png" alt="Sports" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Sports</span>
@@ -188,7 +183,7 @@ export function Hero() {
                   style={{ y: y5 }}
                   className="group relative aspect-square rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 dark:border-white/5 will-change-transform"
                 >
-                  <img src="/lifestyle-3.png" alt="Games" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" />
+                  <Image src="/lifestyle-3.png" alt="Games" fill className="object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform" priority />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="rounded-full bg-white/90 dark:bg-black/80 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-900 dark:text-white backdrop-blur-md">Games</span>

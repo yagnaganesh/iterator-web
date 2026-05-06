@@ -18,7 +18,7 @@ type Cat = {
   glow2: string;
   glowL: string;
   glow2L: string;
-  ambient: any;
+  ambient: Record<string, any>;
   entrance: { x?: number; y?: number; scale?: number; rotate?: number; opacity?: number };
 };
 
@@ -27,7 +27,7 @@ const CATS: Cat[] = [
     key: "dine",
     num: "01",
     label: "Dine Out",
-    headline: "Reserve your table at the city's finest.",
+    headline: "Reserve your table at the city&apos;s finest.",
     desc: "From rooftop bistros to hidden neighbourhood gems — discover and instantly book the perfect dining experience.",
     Icon: Utensils,
     accent: "#f59e0b",
@@ -88,7 +88,7 @@ const CATS: Cat[] = [
     num: "05",
     label: "Events & Games",
     headline: "Level up your weekend.",
-    desc: "Bowling alleys, escape rooms, arcades, live events — discover what's happening and grab your spot.",
+    desc: "Bowling alleys, escape rooms, arcades, live events — discover what&apos;s happening and grab your spot.",
     Icon: Ticket,
     accent: "#7c3aed",
     glow: "rgba(167,139,250,0.22)",

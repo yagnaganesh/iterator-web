@@ -55,6 +55,7 @@ body::before {
     linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(to bottom, black, transparent 78%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
   /* Promote to its own GPU layer — prevents repaint on every scroll frame */
   transform: translateZ(0);
   will-change: transform;
