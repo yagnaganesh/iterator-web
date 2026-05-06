@@ -84,6 +84,8 @@ export function Hero() {
                 style={{
                   backgroundImage: "linear-gradient(90deg, #D99A10, #1B5FCC, #D99A10)",
                   backgroundSize: "200% auto",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
                   willChange: "background-position",
                 }}
               >
